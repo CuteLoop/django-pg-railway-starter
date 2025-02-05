@@ -89,13 +89,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # By default, uses Postgres settings from environment variables
 # If you want a fallback for local dev, change the defaults below
 
-os.environ.setdefault("PGDATABASE", "liftoff_dev")
-os.environ.setdefault("PGUSER", "username")
-os.environ.setdefault("PGPASSWORD", "")
-os.environ.setdefault("PGHOST", "localhost")
-os.environ.setdefault("PGPORT", "5432")
+import dj_database_url
 
 DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}
+
+
+
+
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ["PGDATABASE"],
@@ -104,7 +107,7 @@ DATABASES = {
         'HOST': os.environ["PGHOST"],
         'PORT': os.environ["PGPORT"],
     }
-}
+}'''
 
 # --------------------------------------------------------------
 # PASSWORD VALIDATION
