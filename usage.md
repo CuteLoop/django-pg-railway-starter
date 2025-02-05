@@ -119,10 +119,29 @@ Navigate to the Networking section under the Settings tab of your new service.
 Click Generate Domain to create a public URL for your app.
 
 
+
+
+## make 
+
+
+# final requirements.txt 
+
+asgiref==3.8.1
+Django==5.1.5
+psycopg2-binary==2.9.6
+sqlparse==0.5.3
+tzdata==2025.1
+whitenoise==6.8.2
+dj-database-url==2.3.0
+gunicorn==20.1.0
+
 ´´´
 
 
 ´´´
+
+
+
 
 
 
