@@ -46,6 +46,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    ## Required by django-allauth
+    'django.contrib.sites',  # Must be added
+
+    # allauth apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # My apps
+
+    'home',
+    'users.apps.UsersConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -56,8 +70,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # <-- Add this line
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -65,6 +81,8 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # your custom templates directory
+
         'DIRS': [
             # You can add a custom templates directory if you have one:
             # BASE_DIR / "templates",
@@ -91,12 +109,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
-
-
-
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 '''DATABASES = {
     'default': {
@@ -153,6 +176,43 @@ STORAGES = {
 # DEFAULT PRIMARY KEY FIELD TYPE
 # --------------------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+##### Allauth settings #####
+
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default Django auth
+    'allauth.account.auth_backends.AuthenticationBackend',  # allauth backend
+)
+
+# Redirect URLs
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
+# Email verification (set to "none" for development)
+ACCOUNT_EMAIL_VERIFICATION = "none"  
+ACCOUNT_EMAIL_REQUIRED = True
+
+# Optional: Customize the signup form fields, etc.
+ACCOUNT_USERNAME_REQUIRED = False
+
+
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm',
+}
+
+
+
+
+
 
 # --------------------------------------------------------------
 # SECURITY RECOMMENDATIONS (Production)
