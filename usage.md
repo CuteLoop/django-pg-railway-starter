@@ -126,6 +126,9 @@ Click Generate Domain to create a public URL for your app.
 
 # final requirements.txt 
 
+
+
+´´´
 asgiref==3.8.1
 Django==5.1.5
 psycopg2-binary==2.9.6
@@ -138,7 +141,8 @@ gunicorn==20.1.0
 ´´´
 
 
-´´´
+
+
 
 
 

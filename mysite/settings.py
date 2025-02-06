@@ -55,6 +55,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    # Other apps...
+    'django_bootstrap5',
+    "crispy_forms",
+    "crispy_bootstrap5",
+
     # My apps
 
     'home',
@@ -194,8 +199,20 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 
 
+
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
+### Allaouth settings ###
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+
+
+
+
 
 # Email verification (set to "none" for development)
 ACCOUNT_EMAIL_VERIFICATION = "none"  
@@ -205,12 +222,12 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 
-ACCOUNT_FORMS = {
-    'signup': 'users.forms.CustomSignupForm',
-}
+ACCOUNT_FORMS = {'signup': 'users.forms.CustomSignupForm'}
 
 
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 
