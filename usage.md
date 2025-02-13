@@ -140,7 +140,8 @@ gunicorn==20.1.0
 
 ´´´
 
-
+curl -fsSL https://railway.com/install.sh | sh
+railway link -p 5c612e60-5712-4138-8f02-a051834a1838
 
 
 
