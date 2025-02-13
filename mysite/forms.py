@@ -9,3 +9,10 @@ class CustomSignupForm(SignupForm):
         user.bio = self.cleaned_data.get('bio')
         user.save()
         return user
+
+
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100, label="Subject")
+    email = forms.EmailField(label="Your Email")
+    message = forms.CharField(widget=forms.Textarea, label="Message")

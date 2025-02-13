@@ -5,22 +5,41 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="mt-4">Contact Us</h1>
-    <p class="lead">Have a question? Interested in joining our classes? Fill out the form below, and we'll get back to you soon.</p>
-
-    <div class="card shadow-sm p-4">
+  <h1 class="mt-4 text-center">Contact Us</h1>
+  <p class="lead text-center">Have a question? Interested in joining our classes? Fill out the form below, and we'll get back to you soon.</p>
+  
+  {% if messages %}
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          {% for message in messages %}
+          <div class="alert alert-info" role="alert">
+              {{ message }}
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+  {% endif %}
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4">
         <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}  <!-- This ensures all fields, including the message input, are included -->
-            <button type="submit" class="btn btn-primary w-100 mt-2">Send Message</button>
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-primary w-100 mt-2">Send Message</button>
         </form>
+      </div>
     </div>
-
-    <hr>
-
-    <h2>Other Ways to Reach Us</h2>
-    <p>Email: <a href="mailto:info@myproject.com">info@myproject.com</a></p>
-    <p>Phone: +1 (555) 123-4567</p>
-    <p>Follow us on Instagram: <a href="https://instagram.com/ACDivulgaciondeCiencia" target="_blank">@ACDivulgaciondeCiencia</a></p>
+  </div>
+  
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6 text-center">
+      <hr>
+      <h2>Other Ways to Reach Us</h2>
+      <p>Email: <a href="mailto:info@myproject.com">info@myproject.com</a></p>
+      <p>Phone: +1 (555) 123-4567</p>
+      <p>Follow us on Instagram: <a href="https://instagram.com/ACDivulgaciondeCiencia" target="_blank">@ACDivulgaciondeCiencia</a></p>
+    </div>
+  </div>
 </div>
 {% endblock %}

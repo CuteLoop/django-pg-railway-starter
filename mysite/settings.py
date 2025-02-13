@@ -17,6 +17,7 @@ from pathlib import Path
 # --------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # You should set these environment variables in production
 # For example:
 # SECRET_KEY=<your-production-secret>
@@ -87,11 +88,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],  # your custom templates directory
-
-        'DIRS': [
-            # You can add a custom templates directory if you have one:
-            # BASE_DIR / "templates",
-        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,6 +99,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -167,8 +164,13 @@ USE_TZ = True
 # STATIC FILES
 # --------------------------------------------------------------
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Enable Gzip or Brotli compression and cache headers with WhiteNoise
 STORAGES = {
@@ -200,14 +202,24 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 
 
+
+
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 ### Allaouth settings ###
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+#ACCOUNT_AUTHENTICATION_METHOD = 'email'
+#ACCOUNT_USER_MODEL_USERNAME_FIELD 
+#ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_USERNAME_REQUIRED = False
+
+###
+# Allauth settings
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # or "optional" based on your needs
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # or "email" if you prefer
+LOGIN_REDIRECT_URL = '/'
+#ACCOUNT_SIGNUP_FORM_CLASS = 'your_app.forms.YourCustomSignupForm'
 
 
 
@@ -230,6 +242,18 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
+if DEBUG:
+    # Local development: use console email backend so emails are printed in the terminal.
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    # Production on Railway: use the SMTP backend with environment variables set on Railway.
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # --------------------------------------------------------------
 # SECURITY RECOMMENDATIONS (Production)
