@@ -28,12 +28,19 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 # ALLOWED_HOSTS should be a comma-separated list in production
 # e.g. ALLOWED_HOSTS="your-domain.com,your-other-domain.com"
-allowed_hosts_env = os.environ.get("ALLOWED_HOSTS", "*")
-ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+# Retrieve the Railway public domain from the environment variable
+RAILWAY_PUBLIC_DOMAIN = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
 
-# If you're serving forms/admin over HTTPS, set your domain here for CSRF protection
-# e.g. CSRF_TRUSTED_ORIGINS=["https://*.example.com"]
-CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
+if RAILWAY_PUBLIC_DOMAIN:
+    # Production settings: use Railway's public domain
+    ALLOWED_HOSTS = [RAILWAY_PUBLIC_DOMAIN]
+    CSRF_TRUSTED_ORIGINS = [f"https://{RAILWAY_PUBLIC_DOMAIN}"]
+    PUBLIC_URL = f"https://{RAILWAY_PUBLIC_DOMAIN}"
+else:
+    # Development settings: default to localhost
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+    CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
+    PUBLIC_URL = "http://localhost:8000"
 # If you'd like to load from an env variable, do:
 # CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 
