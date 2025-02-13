@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.s
 
 # If you're serving forms/admin over HTTPS, set your domain here for CSRF protection
 # e.g. CSRF_TRUSTED_ORIGINS=["https://*.example.com"]
-CSRF_TRUSTED_ORIGINS = ["https://vdancehub-production.up.railway.app/"]
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 # If you'd like to load from an env variable, do:
 # CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 
