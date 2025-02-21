@@ -1,11 +1,51 @@
 # main/views.py
 from django.views.generic import TemplateView
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+class ServicesView(TemplateView):
+    template_name = 'services.html'
+
+class FaqView(TemplateView):
+    template_name = 'faq.html'
+
+
+
+from django.views.generic import TemplateView
+from .forms import EmailSubscriptionForm
+
 class HomeView(TemplateView):
     template_name = 'home.html'
 
-class AboutView(TemplateView):
-    template_name = 'about.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        subscription_form = EmailSubscriptionForm()
+        context['hero_form'] = subscription_form
+        context['footer_form'] = subscription_form
+        return context
+
+
+
+
+
+from django.shortcuts import redirect
+from django.contrib import messages
+from .forms import EmailSubscriptionForm
+
+def subscribe_view(request):
+    if request.method == 'POST':
+        form = EmailSubscriptionForm(request.POST)
+        if form.is_valid():
+            # Process the subscription (e.g., save email, send confirmation, etc.)
+            messages.success(request, "Thank you for subscribing!")
+            return redirect('home')
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = EmailSubscriptionForm()
+    return render(request, 'home.html', {'footer_form': form, 'hero_form': form})
+
 
 
 from django.shortcuts import render, redirect

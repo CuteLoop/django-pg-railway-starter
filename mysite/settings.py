@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
     # Other apps...
     'django_bootstrap5',
+    #'django_bootstrap_icons'
     "crispy_forms",
     "crispy_bootstrap5",
 

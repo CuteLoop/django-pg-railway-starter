@@ -4,6 +4,11 @@ env\Scripts\activate
 
 pip install django
 
+pip install -r requirements.txt
+
+python manage.py runserver
+
+
 django-admin startproject mysite
 
 python manage.py runserver

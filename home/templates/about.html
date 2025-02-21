@@ -1,27 +1,97 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}About Us - My Project{% endblock %}
+{% block title %}About Us | Spark Digital Agency{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="mt-4">About Us</h1>
-    <p class="lead">Welcome to My Project! We are passionate about dance and love sharing the joy of movement with others.</p>
-
-    <div class="row">
-        <div class="col-md-8">
-            <h2>Our Mission</h2>
-            <p>Our goal is to create a welcoming space for people to learn, improve, and enjoy dancing—especially cumbia!</p>
-
-            <h2>Meet the Instructor</h2>
-            <p>Hi! I’m Joel, the founder of this dance project. With years of experience in social dancing, I focus on making learning fun, accessible, and interactive.</p>
-
-            <h2>Join Us!</h2>
-            <p>We host regular classes and social dance events. Stay tuned for updates, and we’d love to see you on the dance floor!</p>
-        </div>
-
-        <div class="col-md-4 text-center">
-            <img src="https://via.placeholder.com/250" class="rounded-circle img-fluid" alt="Instructor Image">
-        </div>
+<!-- About Page Hero -->
+<section class="py-5" style="background: url('{% static "imgs/about-hero.jpg" %}') center center/cover; height: 400px;">
+  <div class="container h-100 d-flex align-items-center justify-content-center">
+    <div class="text-center text-white" style="background-color: rgba(0,0,0,0.5); padding: 20px;">
+      <h1 class="display-4 fw-bold">About Spark Digital Agency</h1>
+      <p class="lead">Innovative. Creative. Results-driven.</p>
     </div>
-</div>
+  </div>
+</section>
+
+<!-- Our Story -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Story</h2>
+    <p class="lead text-center mb-5">
+      Founded with a passion for innovation and creativity, Spark Digital Agency was established to help brands cut through the noise. 
+      We blend data-driven strategies with creative storytelling to deliver outstanding results for our clients.
+    </p>
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          Our journey began in a small shared workspace, where a group of like-minded professionals combined their diverse expertise. 
+          Through late nights and constant innovation, we evolved into a full-service agency dedicated to empowering businesses across industries.
+        </p>
+        <p>
+          Today, our team is recognized for its strategic vision, creative prowess, and commitment to excellence. Every project we undertake is a partnership built on trust, collaboration, and measurable success.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img src="{% static "imgs/our-story.jpg" %}" alt="Our Story" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Mission -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Mission</h2>
+    <p class="lead text-center mb-5">
+      Our mission is simple – to help brands ignite growth and forge lasting connections with their audiences.
+      We strive to deliver innovative, tailor-made solutions that drive tangible business results.
+    </p>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <i class="bi bi-lightbulb fs-1 text-primary mb-3"></i>
+        <h4>Innovate</h4>
+        <p>We are continuously exploring new ideas and strategies to keep your brand ahead of the curve.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-people fs-1 text-primary mb-3"></i>
+        <h4>Collaborate</h4>
+        <p>We work closely with our clients to understand their unique challenges and craft custom solutions.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-graph-up fs-1 text-primary mb-3"></i>
+        <h4>Deliver</h4>
+        <p>Our data-driven approach ensures that our strategies are not only creative, but also effective and measurable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Team -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Meet Our Team</h2>
+    <p class="lead text-center mb-5">A diverse group of experts dedicated to your success.</p>
+    <div class="row">
+      <!-- Team Member 1 -->
+      <div class="col-md-4 text-center mb-4">
+        <img src="{% static "imgs/team1.jpg" %}" alt="Team Member 1" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+        <h5 class="mb-0">Mario Gonzalez</h5>
+        <p class="text-muted">Founder & CEO</p>
+      </div>
+      <!-- Team Member 2 -->
+      <div class="col-md-4 text-center mb-4">
+        <img src="{% static "imgs/team2.jpg" %}" alt="Team Member 2" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+        <h5 class="mb-0">Chris Lee</h5>
+        <p class="text-muted">Creative Director</p>
+      </div>
+      <!-- Team Member 3 -->
+      <div class="col-md-4 text-center mb-4">
+        <img src="{% static "imgs/team3.jpg" %}" alt="Team Member 3" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+        <h5 class="mb-0">Jamie Patel</h5>
+        <p class="text-muted">Growth Strategist</p>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
