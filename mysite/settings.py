@@ -249,10 +249,8 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
-if DEBUG:
+if not DEBUG:
     # Local development: use console email backend so emails are printed in the terminal.
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
     # Production on Railway: use the SMTP backend with environment variables set on Railway.
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
@@ -261,6 +259,9 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # --------------------------------------------------------------
 # SECURITY RECOMMENDATIONS (Production)
