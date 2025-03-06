@@ -58,6 +58,12 @@ INSTALLED_APPS = [
     ## Required by django-allauth
     'django.contrib.sites',  # Must be added
 
+   
+    # ... your other apps
+    'cloudinary',
+    'cloudinary_storage',
+
+
     # allauth apps
     'allauth',
     'allauth.account',
@@ -207,7 +213,24 @@ AUTHENTICATION_BACKENDS = (
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+#CDN Cloudinary
+""" 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
 
+# Use Cloudinary for media files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# If you want to serve static files via Cloudinary as well, you can set:
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+# Your Cloudinary URLs will be provided automatically
+MEDIA_URL = f"https://res.cloudinary.com/{os.getenv('CLOUDINARY_CLOUD_NAME')}/"
+
+"""
 
 
 

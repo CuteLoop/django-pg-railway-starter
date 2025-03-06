@@ -6,7 +6,7 @@
 
 {% block content %}
 <!-- Masthead / Hero Section with Dark Overlay -->
-<header class="masthead position-relative" style="background: url('{% static "imgs/sky.jpg" %}') center center/cover; height: 100vh;">
+<header class="masthead position-relative" style="background: image-set(url('{% static "imgs_optimized/sky_desktop.webp" %}') type('image/webp'), url('{% static "imgs_optimized/sky_desktop.jpg" %}') type('image/jpeg')) center center/cover; height: 100vh;">
   <!-- Dark Overlay -->
   <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.6);"></div>
   <div class="container position-relative h-100 d-flex align-items-center justify-content-center">
@@ -73,7 +73,7 @@
     </div>
     <!-- Block 2: Image -->
     <div class="row g-0">
-      <div class="col-12 showcase-img" style="background: url('{% static "imgs/showcase1.jpg" %}') center center/cover; height: 600px; width: 100%;">
+      <div class="col-12 showcase-img" style="background: image-set(url('{% static "imgs_optimized/showcase1_desktop.webp" %}') type('image/webp'), url('{% static "imgs_optimized/showcase1_desktop.jpg" %}') type('image/jpeg')) center center/cover; height: 600px; width: 100%;">
       </div>
     </div>
     <!-- Block 3: Text -->
@@ -85,7 +85,7 @@
     </div>
     <!-- Block 4: Image -->
     <div class="row g-0">
-      <div class="col-12 showcase-img" style="background: url('{% static "imgs/showcase2.jpg" %}') center center/cover; height: 600px; width: 100%;">
+      <div class="col-12 showcase-img" style="background: image-set(url('{% static "imgs_optimized/showcase2_desktop.webp" %}') type('image/webp'), url('{% static "imgs_optimized/showcase2_desktop.jpg" %}') type('image/jpeg')) center center/cover; height: 600px; width: 100%;">
       </div>
     </div>
     <!-- Block 5: Text -->
@@ -97,7 +97,7 @@
     </div>
     <!-- Block 6: Image -->
     <div class="row g-0">
-      <div class="col-12 showcase-img" style="background: url('{% static "imgs/showcase3.jpg" %}') center center/cover; height: 600px; width: 100%;">
+      <div class="col-12 showcase-img" style="background: image-set(url('{% static "imgs_optimized/showcase3_desktop.webp" %}') type('image/webp'), url('{% static "imgs_optimized/showcase3_desktop.jpg" %}') type('image/jpeg')) center center/cover; height: 600px; width: 100%;">
       </div>
     </div>
   </div>
@@ -110,21 +110,30 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5">
-          <img class="img-fluid rounded-circle mb-3" src="{% static "imgs/client1.jpg" %}" alt="Client 1">
+          <picture>
+            <source srcset="{% static "imgs_optimized/client1_desktop.webp" %}" type="image/webp">
+            <img class="img-fluid rounded-circle mb-3" src="{% static "imgs_optimized/client1_desktop.jpg" %}" alt="Client 1">
+          </picture>
           <h5>Margaret E.</h5>
           <p class="fw-light mb-0">"This is fantastic! Thanks so much guys!"</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5">
-          <img class="img-fluid rounded-circle mb-3" src="{% static "imgs/client2.jpg" %}" alt="Client 2">
+          <picture>
+            <source srcset="{% static "imgs_optimized/client2_desktop.webp" %}" type="image/webp">
+            <img class="img-fluid rounded-circle mb-3" src="{% static "imgs_optimized/client2_desktop.jpg" %}" alt="Client 2">
+          </picture>
           <h5>Fred S.</h5>
           <p class="fw-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5">
-          <img class="img-fluid rounded-circle mb-3" src="{% static "imgs/client3.jpg" %}" alt="Client 3">
+          <picture>
+            <source srcset="{% static "imgs_optimized/client3_desktop.webp" %}" type="image/webp">
+            <img class="img-fluid rounded-circle mb-3" src="{% static "imgs_optimized/client3_desktop.jpg" %}" alt="Client 3">
+          </picture>
           <h5>Sarah W.</h5>
           <p class="fw-light mb-0">"Thanks so much for making these free resources available to us!"</p>
         </div>
