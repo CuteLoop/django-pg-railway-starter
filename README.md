@@ -1,4 +1,4 @@
-# Django Blog with Railway Template
+# Django Railway Template
 
 A responsive Django landing page with Postgres db and allauth authentication
 Ready for quick deployment on Railway.
