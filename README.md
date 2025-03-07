@@ -1,4 +1,6 @@
 # Django Railway Template
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/template/-VPzAd)
+
 
 A responsive Django landing page with Postgres db and allauth authentication
 Ready for quick deployment on Railway.
