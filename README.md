@@ -1,12 +1,7 @@
 # Django Blog with Railway Template
 
-A responsive Django Ready for quick deployment on Railway.
-
-## Features
-
-- **Responsive Design:** Built with Bootstrap 5.
-- **Fixed Navbar:** Always accessible navigation.
-- **Railway Ready:** Quick deployment via Railway.
+A responsive Django landing page with Postgres db and allauth authentication
+Ready for quick deployment on Railway.
 
 ## Local Development
 
