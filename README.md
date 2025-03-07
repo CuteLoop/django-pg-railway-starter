@@ -7,10 +7,10 @@ Ready for quick deployment on Railway.
 
 1. **Clone the Repository:**
 
-   ```bash
-   git clone https://github.com/CuteLoop/django-pg-railway-starter.git
-   cd django-pg-railway-starter
-   ```
+```
+git clone https://github.com/CuteLoop/django-pg-railway-starter.git
+cd django-pg-railway-starter
+```
 ```
 python3 -m venv env
 source env/bin/activate      # On Windows: env\Scripts\activate
